@@ -8,9 +8,9 @@ This project is organized into three separate branches, each representing a dist
 
 | Branch | Purpose | Key Technologies |
 | :--- | :--- | :--- |
-| [**`BasketBallNotebook`**](https://github.com/Manabodha-Fintech/BasketBall/BasketBallNotebook) | Data Science & Modeling | Python, Pandas, Scikit-learn, Jupyter |
-| [**`BasketBallLambda`**](https://github.com/Manabodha-Fintech/BasketBall/BasketBallLambda) | Prediction API | AWS Lambda, Python, API Gateway |
-| [**`BasketBallRDS`**](https://github.com/Manabodha-Fintech/BasketBall/BasketBallRDS) | Data Warehousing & Automation | AWS RDS, AWS Lambda, Python |
+| [**`BasketBallNotebook`**](https://github.com/EagleAI-Research/BasketBall/BasketBallNotebook) | Data Science & Modeling | Python, Pandas, Scikit-learn, Jupyter |
+| [**`BasketBallLambda`**](https://github.com/EagleAI-Research/BasketBall/BasketBallLambda) | Prediction API | AWS Lambda, Python, API Gateway |
+| [**`BasketBallRDS`**](https://github.com/EagleAI-Research/BasketBall/BasketBallRDS) | Data Warehousing & Automation | AWS RDS, AWS Lambda, Python |
 
 ---
 
@@ -66,7 +66,7 @@ To ensure the database is continuously updated with the latest game results, whi
 
 1.  **Clone the Repository:**
     ```bash
-    git clone https://github.com/Manabodha-Fintech/BasketBall.git
+    git clone https://github.com/EagleAI-Research/BasketBall.git
     ```
 
 2.  **Explore a Module:** Check out the specific branch you are interested in.
