@@ -1,0 +1,9 @@
+boto3
+pandas
+numpy
+scipy
+psycopg2-binary
+ujson
+pika
+scikit-learn
+requests

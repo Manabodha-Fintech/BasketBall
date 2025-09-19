@@ -3,3 +3,5 @@
 *.xlsx
 *.csv
 *.json
+/data_fetch_script
+/data

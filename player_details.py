@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 import pandas as pd
 from typing import Dict, Any, Optional
 
@@ -8,7 +9,7 @@ def get_player_data(player_id: str,league: str) -> Optional[Dict[str, Any]]:
 
     headers = {
         "accept": "application/json",
-        "x-api-key": "jgZSh6T2kgcNJBCK2hGkLmScuMYlrj8jxNH9xzuh"
+        "x-api-key": os.getenv("SPORTSRADAR_API_KEY")
     }
     
     try:
@@ -76,7 +77,7 @@ def get_seasons_dataframe(player_data: Dict[str, Any]) -> pd.DataFrame:
     seasons_list = []
     for season in player_data.get('seasons', []):
         team_data = season.get('teams', [{}])[0] if season.get('teams') else {}
-        statistics = team_data.get('statistics', {})
+        statistics = team_data.get('total', {})
         
         season_info = {
             'player_id': player_data.get('id'),
@@ -126,7 +127,8 @@ def player_info_handler(player_id: str, league: str, return_type: str = 'basic')
     basic_df = pd.DataFrame([player_info])
 
      # Extract seasons data
-    seasons_df = get_seasons_dataframe(player_data)
+    # seasons_df = get_seasons_dataframe(player_data)
+    seasons_df = pd.DataFrame([])
 
     if return_type == 'basic':
         return basic_df
