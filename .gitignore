@@ -1,0 +1,8 @@
+# .env
+ 
+*.xlsx
+*.csv
+*.json
+/data_fetch_script
+/data
+/__pycache__
