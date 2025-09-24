@@ -1,0 +1,6 @@
+aiohttp
+aiofiles
+# python-dotenv
+psycopg2-binary
+requests
+pandas

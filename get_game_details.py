@@ -4,7 +4,7 @@ import os
 from typing import List, Dict, Any, Optional
 
 # Constants
-API_BASE_URL = "https://api.sportradar.com/nba/production/v8/en/games"
+# API_BASE_URL = "https://api.sportradar.com/nba/production/v8/en/games"
 MAX_RETRIES = 5
 BACKOFF_FACTOR = 1.5
 REQUEST_TIMEOUT = 30
@@ -30,8 +30,9 @@ def fetch_with_retry(url: str, params: Dict[str, str], retries: int = MAX_RETRIE
     print(f"Failed to fetch {url} after {retries} attempts.")
     return None
 
-def fetch_game_details(game_id: str) -> Optional[Dict[str, Any]]:
+def fetch_game_details(game_id: str,league) -> Optional[Dict[str, Any]]:
     """Fetch game details for a single game ID. Returns JSON dict or None."""
+    API_BASE_URL = f"https://api.sportradar.com/{league}/production/v8/en/games"
     url = f"{API_BASE_URL}/{game_id}/summary.json"
     params = {"api_key": os.getenv('SPORTSRADAR_API_KEY')}
     data = fetch_with_retry(url, params)
@@ -42,13 +43,13 @@ def fetch_game_details(game_id: str) -> Optional[Dict[str, Any]]:
         print(f"Skipping game {game_id} due to repeated failures.")
         return None
 
-def process_game_ids(game_ids: List[str]) -> List[Dict[str, Any]]:
+def process_game_ids(game_ids: List[str], league: str) -> List[Dict[str, Any]]:
     """Fetch game details for all game IDs and return a list of JSON data."""
     all_games_data = []
     total = len(game_ids)
     
     for count, game_id in enumerate(game_ids, start=1):
-        game_data = fetch_game_details(game_id)
+        game_data = fetch_game_details(game_id,league)
         if game_data:
             all_games_data.append(game_data)
             print(f"{count}/{total} Fetched data for game {game_id}")

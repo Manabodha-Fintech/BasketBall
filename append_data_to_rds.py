@@ -4,8 +4,11 @@ import os
 
 
 csv_table_map = {
-    os.path.join("/tmp", "player_stats.csv"): "basketball_nba_player_stats",
-    os.path.join("/tmp", "team_stats.csv"): "basketball_nba_team_stats",
+    os.path.join("/tmp", "player_stats_nba.csv"): "basketball_nba_player_stats",
+    os.path.join("/tmp", "team_stats_nba.csv"): "basketball_nba_team_stats",
+    os.path.join("/tmp", "player_stats_ncaamb.csv"): "basketball_ncaamb_player_stats",
+    os.path.join("/tmp", "team_stats_ncaamb.csv"): "basketball_ncaamb_team_stats",
+    
 }
 
 def load_csvs_to_postgres():
@@ -26,7 +29,7 @@ def load_csvs_to_postgres():
             port=db_port
         )
     except psycopg2.Error as e:
-        print(f"❌ Error connecting to database: {e}")
+        print(f"Error connecting to database: {e}")
         return
 
     cur = conn.cursor()
@@ -36,13 +39,13 @@ def load_csvs_to_postgres():
         try:
             # Load into PostgreSQL
             with open(csv_file, 'r') as f:
-                print(f"📥 Loading {csv_file} into {table_name}...")
+                print(f"Loading {csv_file} into {table_name}...")
                 cur.copy_expert(f"COPY {table_name} FROM STDIN WITH CSV HEADER", f)
             conn.commit()
-            print(f"✅ Successfully loaded {csv_file} into {table_name}")
+            print(f"Successfully loaded {csv_file} into {table_name}")
         except Exception as e:
             conn.rollback()
-            print(f"❌ Error loading {csv_file} into {table_name}: {e}")
+            print(f"Error loading {csv_file} into {table_name}: {e}")
 
     # Clean up
     cur.close()

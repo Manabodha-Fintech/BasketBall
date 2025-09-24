@@ -5,15 +5,16 @@ from datetime import datetime, timedelta, timezone
 # from dotenv import load_dotenv  
 # load_dotenv()
 
-def get_closed_games_for_date():
+def get_closed_games_for_date(league):
     date = datetime.now(timezone.utc).date()
-    print(date)
-    2024-10-22
+    # print(date)
+    # nba = 2024-10-22
+    #ncaamb = 2025-03-03
     year = date.year
     month = date.month
     day = date.day
     # url = f"https://api.sportradar.com/nba/production/v8/en/games/{year}/{month:02d}/{day:02d}/schedule.json"
-    url = f"https://api.sportradar.com/nba/production/v8/en/games/{2024}/{10}/{22}/schedule.json"
+    url = f"https://api.sportradar.com/{league}/production/v8/en/games/{year}/{month}/{day}/schedule.json"
 
     # print(url)
     
@@ -37,7 +38,7 @@ def get_closed_games_for_date():
             if status == "closed":
                 closed_games.append(game_id)
     else:
-        print(f"no NBA game was scheduled on {date}")
+        print(f"no {league} game was scheduled on {date}")
     
     return closed_games
 
