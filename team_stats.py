@@ -120,14 +120,14 @@ def process_team_stats(game_summary, league):
     if league == "nba":
         for column in required_column_order_for_nba_team_stats:
             if column not in df.columns:
-                df[column] = "not present"
+                df[column] = pd.NA
         df = df[required_column_order_for_nba_team_stats]
         output_file = "/tmp/team_stats_nba.csv"
 
     elif league == "ncaamb":
         for column in required_column_order_for_ncaamb_team_stats:
             if column not in df.columns:
-                df[column] = "not present"
+                df[column] = pd.NA
         df = df[required_column_order_for_ncaamb_team_stats]
         output_file = "/tmp/team_stats_ncaamb.csv"
 

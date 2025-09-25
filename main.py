@@ -26,7 +26,7 @@ def main(league):
         print("Team stats exported to CSV.")
         
         print("Loading CSVs to PostgreSQL...")
-        load_csvs_to_postgres()
+        load_csvs_to_postgres(league)
 
     else :
         print("nothing to process")

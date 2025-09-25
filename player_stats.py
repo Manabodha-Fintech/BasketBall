@@ -29,7 +29,7 @@ def create_player_stats_csv(game_data, league):
 					"game_date": game_data.get("scheduled").split("T")[0],
 					"status": game_data.get("status"),
 					"attendance": game_data.get("attendance"),
-					"track_on_court": game_data.get("track_on_court", "not present"),
+					"track_on_court": game_data.get("track_on_court", pd.NA),
 					# team details
 					"team_id": team.get("id"),
 					"team_sr_id": team.get("sr_id"),
@@ -109,7 +109,7 @@ def create_player_stats_csv(game_data, league):
 					"game_date": game_data.get("scheduled").split("T")[0],
 					"status": game_data.get("status"),
 					"attendance": game_data.get("attendance"),
-					"track_on_court": game_data.get("track_on_court", "not present"),
+					"track_on_court": game_data.get("track_on_court", pd.NA),
 					# team details
 					"team_id": team.get("id"),
 					"team_sr_id": team.get("sr_id"),
@@ -195,13 +195,13 @@ def process_player_stats(game_summary, league):
 	if league == "nba":
 		for columns in required_column_order_for_nba_player_stats:
 			if columns not in df.columns:
-				df[columns] = "not present"
+				df[columns] = pd.NA
 		df = df[required_column_order_for_nba_player_stats]
 		output_file = "/tmp/player_stats_nba.csv"
 	elif league == "ncaamb":
 		for columns in required_column_order_for_ncaamb_player_stats:
 			if columns not in df.columns:
-				df[columns] = "not present"
+				df[columns] = pd.NA
 		df = df[required_column_order_for_ncaamb_player_stats]
 		output_file = "/tmp/player_stats_ncaamb.csv"
 	else:
