@@ -43,13 +43,10 @@ To create a serverless, scalable endpoint that can be called by a backend applic
 *   **Preprocessing Logic:** Functions to preprocess incoming game data in real-time, ensuring it matches the pipeline used during training.
 *   **Prediction Handler:** The main function that receives input, preprocesses it, runs the model, and returns a prediction.
 *   **Integration:** Designed to be triggered via HTTP requests through AWS API Gateway.
-
 ---
-
 ## 🗄️ 3. BasketBallRDS (Data Warehousing)
 
 This branch handles the automation for maintaining a persistent and historical record of game data.
-
 ### Purpose
 To ensure the database is continuously updated with the latest game results, which is crucial for model re-training and historical analysis.
 
