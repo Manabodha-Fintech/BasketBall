@@ -14,7 +14,7 @@ def get_closed_games_for_date(league):
     month = date.month
     day = date.day
     # url = f"https://api.sportradar.com/nba/production/v8/en/games/{year}/{month:02d}/{day:02d}/schedule.json"
-    url = f"https://api.sportradar.com/{league}/production/v8/en/games/{2024}/{10}/{22}/schedule.json"
+    url = f"https://api.sportradar.com/{league}/production/v8/en/games/{2025}/{3}/{3}/schedule.json"
 
     # print(url)
     
