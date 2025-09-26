@@ -1,6 +1,6 @@
 aiohttp
 aiofiles
-# python-dotenv
+python-dotenv
 psycopg2-binary
 requests
 pandas
